@@ -1,22 +1,27 @@
-export const initialStore=()=>{
+export const initialStore= ()=>{
   return{
-    message: null,
-    todos: [
-      {
-        id: 1,
-        title: "Make the bed",
-        background: null,
-      },
-      {
-        id: 2,
-        title: "Do my homework",
-        background: null,
-      }
-    ]
+  
+   fName : "Will",
+   lName: "Guell",
+   baseUrl: "https://playground.4geeks.com/contacts/"
   }
 }
 
 export default function storeReducer(store, action = {}) {
+if (action.type == "set-fName"){
+  return {
+    ...store,
+    fName: action.payload
+  }
+}
+
+if (action.type == "set-lName"){
+  return {
+    ...store,
+    lName: action.payload
+  }
+}
+    
   switch(action.type){
     case 'add_task':
 
@@ -29,4 +34,5 @@ export default function storeReducer(store, action = {}) {
     default:
       throw Error('Unknown action.');
   }    
+
 }
